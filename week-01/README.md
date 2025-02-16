@@ -27,6 +27,41 @@ The environment (`gcc` compiler, VS Code, Hello World), compilation vs. runtime.
 1. Opening the working directory in *File explorer*.
 1. Opening the command-line prompt (`cmd`) in the given folder.
 
+### *VS Code*'s configuration
+
+Opening the configuration file:
+
+1. press <kbd>F1</kbd>
+1. type *Preferences: Open User Settings (JSON)*
+
+Sample configuration:
+
+```json
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.colorTheme": "Default Dark Modern",
+    "editor.fontSize": 14,
+    "C_Cpp.default.compilerPath": "c:/MinGW/bin/gcc.exe"
+}
+```
+
+Properties:
+
+1. `workbench.colorTheme`: editor's color theme
+
+   Feel free to adjust the value or add the line to the configuration.  
+
+1. `editor.fontSize`: editor's font size
+
+   Feel free to adjust the value or add the line to the configuration.
+
+1. `C_Cpp.default.compilerPath`: the compiler's path
+
+   Configure it on your computer if the `#include` statements are underlined.
+
+> [!WARNING]
+> There might be other properties; do not modify or delete them!
+
 ### Lifecycle
 
 1. Editing the source code, output: source code (`.c`).
