@@ -41,7 +41,7 @@ Language basics #2 (types, variables, expressions, statements, handling standard
 
 ### Advanced exercises
 
-1. [TeX Quotes](https://progcont.hu/progcont/100005/?locale=en&pid=272)
+1. [TeX Quotes](./exercises/PC200272.md)
 2. [Fractions](./exercises/PC200501.md)
 3. [Dog contest](./exercises/PC200514.md)
 
@@ -59,21 +59,12 @@ Language C doesn't have a boolean (logic) type. Zeroes (having any type) represe
 * Each `for` can be rearranged to be a `while`. The same applies to the other direction.
 * You can skip the remaining statements of the block using the `continue` keyword. You can terminate the loop using the `break` keyword. These keywords are the same as they were in Python.
 
-### About End of File (`EOF`)
-
-The End of Line (`EOF`) can be determined based on the returned value of an input function:
-
-* `scanf()` returns the number of stored values
-* `getchar()` returns the `-1` non-ASCII code
-
-### Header `math.h`
-
-If you have a non-literal expression as some of the `math.h` functions' parameters you may have to use the flag `-lm` in your `gcc` command.
-
 ## Required skills
 
-* Be able to use all the loops (`while`, `for`, and `do while`).
-* Be able to use the statements `continue` and `break` in loops.
-* Be able to process the common input formats.
-* Be able to use the ProgCont system and understand the verdicts.
-* Be able to understand the returned value and the parameters (arguments) of a built-in function based on the official cheat sheet.
+> [!IMPORTANT]
+> The next lab will be based on the following expectations. Please ensure that you are aware of all the skills mentioned. Ask your questions using the available Q&A form in Moodle.
+
+1. You must be able to use the `switch` statement.
+1. You must be able to use all the loops (`while`, `for`, and `do while`).
+1. You must be able to use the statements `continue` and `break` in loops.
+
