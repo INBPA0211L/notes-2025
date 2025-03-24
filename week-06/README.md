@@ -9,14 +9,12 @@ Data structures and built-in functions #2 (1D character arrays, strings)
 ## Agenda
 
 1. Handling charter arrays and strings in the `main()` function.
-2. Passing strings to functions.
-3. Returning strings from functions.
-4. The built-in functions for handling strings and characters (`string.h`, `ctype.h`, and `stdio.h`).
+1. Passing strings to functions.
+1. The built-in functions for handling strings and characters (`string.h`, `ctype.h`, and `stdio.h`).
 
 ## Sample codes
 
 1. [`test_string`](./samples/test_string.c)
-4. [`test_ctype.c`](./samples/test_ctype.c)
 
 ## Exercises
 
@@ -40,8 +38,6 @@ Data structures and built-in functions #2 (1D character arrays, strings)
 ### Handling strings
 
 1. Use the functions of header `string.h` if it is possible to manipulate strings and get their length.
-1. Use the functions of header `ctype.h` to categorize and convert characters. It is possible that this header does not have your required, specific function. In this case, try to implement your custom logic using the function `strchr()` and the other `ctype.h` functions.
-1. Do not mix the invocations of functions `scanf()` and `gets()`. You can expect an empty string from the invocation of function `gets()` just after a `scanf()` invocation. Use only function `gets()` and try to yield your `int` and `double` types using functions `atoi()` and `atof()`.
 
 ### Functions
 
@@ -96,7 +92,7 @@ In this section, we list all the functions that should be known starting this we
   * Returns the memory address of the first occurrence of `c` in `s`.
   * Returns `NULL` if `s` does not contain `c`.
 
-1. `char *strchr(char *s, char *p)`
+1. `char *strstr(char *s, char *p)`
 
   * Determines the first position of string `p` in string `s`.
   * Returns the memory address of the first occurrence of `p` in `s`.
@@ -108,31 +104,11 @@ In this section, we list all the functions that should be known starting this we
   * Returns the memory address of the last occurrence of `c` in `s`.
   * Returns `NULL` if `s` does not contain `c`.
 
-1. `char *strrchr(char *s, char *p)`
+1. `char *strrstr(char *s, char *p)`
 
   * Determines the last position of string `p` in string `s`.
   * Returns the memory address of the last occurrence of `p` in `s`.
   * Returns `NULL` if `s` does not contain `p`.
-
-### Functions of `ctype.h`
-
-The following functions return a logic value determining whether the given parameter belongs to a specific category of characters:
-
-1. `int isalnum(char c)` - Returns whether character `c` is alphanumeric.
-1. `int isalpha(char c)` - Returns whether character `c` is alphabetic.
-1. `int iscntrl(char c)` - Returns whether character `c` is control.
-1. `int isdigit(char c)` - Returns whether character `c` is a decimal digit.
-1. `int isgraph(char c)` - Returns whether character `c` is a printable character.
-1. `int islower(char c)` - Returns whether character `c` is lowercase.
-1. `int ispunct(char c)` - Returns whether character `c` is neither a control nor an alphanumeric character.
-1. `int isspace(char c)` - Returns whether character `c` is a whitespace character.
-1. `int isupper(char c)` - Returns whether character `c` is uppercase.
-1. `int isxdigit(char c)` - Returns whether character `c` is a hexadecimal digit.
-
-The following functions return a character according to their description:
-
-1. `int tolower(char c)` - Returns the lowercase version of character `c`.
-1. `int toupper(char c)` - Returns the uppercase version of character `c`.
 
 ## Required skills
 
@@ -141,6 +117,4 @@ The following functions return a character according to their description:
 
 1. You must be able to declare strings and understand their representation.
 1. You must be able to use the functions `gets()` and `puts()`.
-1. You must be able to use the functions `atoi()` and `atof()`.
 1. You must be able to use the functions of header `string.h`.
-1. You must be able to use the functions of header `ctype.h`.
