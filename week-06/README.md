@@ -24,6 +24,7 @@ Data structures and built-in functions #2 (1D character arrays, strings)
 
 1. [`PC200504` Sentence-ending punctuation](./exercises/PC200504.md)
 1. [`PC200508` Counting Fruits](./exercises/PC200508.md)
+1. [`PC200511` Counting Words](./exercises/PC200511.md)
 1. [`PC200512` THE END](./exercises/PC200512.md)
 1. [`PC200656` Pizzas](./exercises/PC200656.md)
 
