@@ -14,7 +14,7 @@ Data structures and built-in functions #2 (1D character arrays, strings)
 
 ## Sample codes
 
-1. [`test_string`](./samples/test_string.c)
+1. [`test_string.c`](./samples/test_string.c)
 
 ## Exercises
 
