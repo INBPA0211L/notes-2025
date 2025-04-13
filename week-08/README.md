@@ -75,6 +75,14 @@ Data structures and built-in functions #3 (multidimensional arrays, consuming co
 
    The names of the formal parameters are omitted, and the body is replaced with a semicolon.
 
+### Compiling multiple source files
+
+Multiple source files can be compiled together by specifying all of them:
+
+```
+gcc first.c second.c
+```
+
 ## Required skills
 
 > [!IMPORTANT]
