@@ -90,7 +90,7 @@ int main() {
 1. It is **mandatory** to declare the `line` character array having the suitable length (the given limit plus one).
 1. It is **mandatory** to avoid the mixture of `scanf()` and `gets()` function invocations; use the combination of functions `atoi()` and `gets()` to retrieve the first line's value.
 1. It is **mandatory** to declare the record array having the given length.
-1. It is **mandatory** to always pass the string containing the given delimiter as function `strtok()`'s second parameter.
+1. It is **mandatory** to pass the string containing the given delimiter as function `strtok()`'s second parameter.
 1. It is **mandatory** to pass the `line` character array's memory address as function `strtok()`'s first parameter in the first invocation.
 1. It is **mandatory** to pass the `NULL` pointer as function `strtok()`'s second parameter in the remaining invocations.
 1. It is **mandatory** to copy the strings using the `strcpy()` function.
