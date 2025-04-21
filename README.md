@@ -12,7 +12,7 @@ This repository contains notes and exercises for subject *High-level programming
 1. [**Topic B2:** Data structures and built-in functions #2 (1D character arrays, strings).](./week-06/README.md)
 1. [**Topic B3:** Data structures and built-in functions #3 (dynamic memory allocation).](./week-07/README.md)
 1. [**Topic B4:** Data structures and built-in functions #4 (multidimensional arrays, consuming command-line arguments).](./week-08/README.md)
-1. **Topic C1:** Data handling #1 (structures, reading and writing files, processing CSV documents, functions `qsort()` and `bsearch`).
+1. [**Topic C1:** Data handling #2 (structures, reading and writing files, processing CSV documents, functions `qsort()` and `bsearch`).](./week-09/README.md).
 1. **Topic C2:** Data handling #2 (structures, reading and writing files, processing CSV documents, functions `qsort()` and `bsearch`).
 1. **Topic X:** Lab test's warmup session
 
