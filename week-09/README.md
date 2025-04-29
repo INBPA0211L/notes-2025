@@ -38,6 +38,8 @@ Data handling #1 (structures, reading and writing files, processing CSV document
 
 1. [Explanation for the *Airports* (`P109101`) exercise](./airports-explanation.md)
 
+1. [Implementing the comparison function for `qsort()`](./qsort-explanation.md)
+
 ## Required skills
 
 > [!IMPORTANT]
