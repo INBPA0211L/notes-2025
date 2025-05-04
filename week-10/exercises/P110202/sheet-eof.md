@@ -7,16 +7,16 @@ Write a program that reads aircraft records from a CSV file, then sorts and prin
 Define the record `AIRCRAFT` based on a structure having the following fields:
 
 1. `registration_number`: the unique registration number of the aircraft (a string having at most `10` characters, type: `char[]`)
-1. `wing_span`: the wingspan of the aircraft in meters (a floating-point number from the range `[5.00,100.99]`, having `2` precision digits, type: `double`)
-1. `model`: the model of the aircraft (a string having at most `20` characters, type: `char[]`)
 1. `capacity`: the passenger capacity of the aircraft (an integer number from the range `[1,9999999]`, type: `int`)
+1. `model`: the model of the aircraft (a string having at most `20` characters, type: `char[]`)
+1. `wing_span`: the wingspan of the aircraft in meters (a floating-point number from the range `[5.00,100.99]`, having `2` precision digits, type: `double`)
 
 ## Reading records from file
 
 Open and read the CSV file whose name (path) is passed as the first command-line argument. Each line represents a single record in the following format:
 
 ```
-<registration_number>;<wing_span>;<model>;<capacity>
+<registration_number>;<capacity>;<model>;<wing_span>
 ```
 
 The following notes are applied:
@@ -24,9 +24,9 @@ The following notes are applied:
 1. Implement the solution in function `main()`.
 1. The input uses the `';'` (semicolon) character as the delimiter.
 1. Each line contains at most `46` characters.
-1. The end of the input is denoted with a line containing the character sequence `"END"`. It is guaranteed that the input contains at most `180` records.
-1. Print an error message and exit with status code `6` if the command-line argument is not present.
-1. Print an error message and exit with status code `2` if the file cannot be opened.
+The end of the input is denoted with `EOF`. It is guaranteed that the input contains at most `240` records.
+1. Print an error message and exit with status code `9` if the command-line argument is not present.
+1. Print an error message and exit with status code `5` if the file cannot be opened.
 1. The `wing_span` field of each aircraft has `2` precision digits in its representation.
 1. You can expect only valid values for all the fields.
 
@@ -34,9 +34,9 @@ The following notes are applied:
 
 Sort the array using the built-in function `qsort()`, and the following stages:
 
+1. field `wing_span` (ascending)
+1. field `model` (descending)
 1. field `capacity` (ascending)
-1. field `model` (ascending)
-1. field `wing_span` (descending)
 1. field `registration_number` (descending)
 
 The following notes are applied:
@@ -52,8 +52,8 @@ Open the CSV file, whose name is passed as the second command-line argument, the
 
 1. Implement the solution in function `main()`.
 1. The file should have the same format as the input file.
-1. Print an error message and exit with status code `9` if the command-line argument is not present.
-1. Print an error message and exit with status code `7` if the file cannot be opened.
+1. Print an error message and exit with status code `3` if the command-line argument is not present.
+1. Print an error message and exit with status code `4` if the file cannot be opened.
 
 ## Sample execution
 
@@ -70,30 +70,30 @@ input.csv output.csv
 ### Content of file `input.csv`
 
 ```
-AB1234;15.37;Boeing 737;180
-CD5678;22.45;Airbus A320;150
-EF9012;15.37;Boeing 747;300
-GH3456;30.12;Concorde;100
-IJ7890;22.45;Boeing 737;180
-KL2345;15.37;Airbus A320;150
-MN6789;30.12;Boeing 747;300
-OP0123;22.45;Concorde;100
-QR4567;15.37;Boeing 737;180
-ST8901;30.12;Airbus A320;150
+AB123CD;150;Boeing 737;28.45
+XY987ZT;200;Airbus A320;30.12
+LM456OP;150;Boeing 747;35.67
+QR789UV;300;Concorde;25.89
+GH234IJ;200;Airbus A320;28.45
+CD567EF;150;Boeing 737;30.12
+WX890YZ;300;Concorde;35.67
+UV345ST;400;Boeing 747;25.89
+EF678GH;400;Boeing 747;28.45
+IJ901KL;200;Airbus A320;35.67
 ```
 
 ### Content of file `output.csv`
 
 ```
-GH3456;30.12;Concorde;100
-OP0123;22.45;Concorde;100
-ST8901;30.12;Airbus A320;150
-CD5678;22.45;Airbus A320;150
-KL2345;15.37;Airbus A320;150
-IJ7890;22.45;Boeing 737;180
-QR4567;15.37;Boeing 737;180
-AB1234;15.37;Boeing 737;180
-MN6789;30.12;Boeing 747;300
-EF9012;15.37;Boeing 747;300
+QR789UV;300;Concorde;25.89
+UV345ST;400;Boeing 747;25.89
+EF678GH;400;Boeing 747;28.45
+AB123CD;150;Boeing 737;28.45
+GH234IJ;200;Airbus A320;28.45
+CD567EF;150;Boeing 737;30.12
+XY987ZT;200;Airbus A320;30.12
+WX890YZ;300;Concorde;35.67
+LM456OP;150;Boeing 747;35.67
+IJ901KL;200;Airbus A320;35.67
 ```
 

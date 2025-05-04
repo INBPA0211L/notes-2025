@@ -24,8 +24,8 @@ The following notes are applied:
 1. Implement the solution in function `main()`.
 1. The input uses the `';'` (semicolon) character as the delimiter.
 1. Each line contains at most `76` characters.
-1. The end of the input is denoted with a line containing the character sequence `"END"`. It is guaranteed that the input contains at most `320` records.
-1. Print an error message and exit with status code `6` if the command-line argument is not present.
+The end of the input is denoted with a line containing the character sequence `"END"`. It is guaranteed that the input contains at most `180` records.
+1. Print an error message and exit with status code `3` if the command-line argument is not present.
 1. Print an error message and exit with status code `4` if the file cannot be opened.
 1. The `baggage_weight` field of each passenger has `2` precision digits in its representation.
 1. You can expect only valid values for all the fields.
@@ -34,10 +34,10 @@ The following notes are applied:
 
 Sort the array using the built-in function `qsort()`, and the following stages:
 
-1. field `age` (descending)
-1. field `baggage_weight` (descending)
-1. field `full_name` (ascending)
-1. field `passport_number` (ascending)
+1. field `full_name` (descending)
+1. field `baggage_weight` (ascending)
+1. field `age` (ascending)
+1. field `passport_number` (descending)
 
 The following notes are applied:
 
@@ -52,8 +52,8 @@ Open the CSV file, whose name is passed as the second command-line argument, the
 
 1. Implement the solution in function `main()`.
 1. The file should have the same format as the input file.
-1. Print an error message and exit with status code `9` if the command-line argument is not present.
-1. Print an error message and exit with status code `2` if the file cannot be opened.
+1. Print an error message and exit with status code `5` if the command-line argument is not present.
+1. Print an error message and exit with status code `7` if the file cannot be opened.
 
 ## Sample execution
 
@@ -70,32 +70,32 @@ input.csv output.csv
 ### Content of file `input.csv`
 
 ```
-X1234567890123;34;Alice Johnson;12.34
-Y9876543210987;45;Bob Smith;25.67
-Z1928374650912;34;Charlie Brown;50.12
-W5647382910567;29;Diana Prince;33.45
-A1029384756102;45;Alice Johnson;12.34
-B5647382910568;29;Bob Smith;25.67
-C1928374650913;34;Diana Prince;33.45
-D9876543210988;45;Charlie Brown;50.12
-E1234567890124;29;Alice Johnson;12.34
-F5647382910569;34;Bob Smith;25.67
+X1234567890123;25;Alice Johnson;12.34
+Y9876543210987;30;Bob Smith;45.67
+Z1928374650912;25;Charlie Brown;23.45
+W5647382910567;40;Diana Prince;34.56
+A1029384756102;30;Alice Johnson;45.67
+B5647382910568;25;Bob Smith;12.34
+C1928374650913;40;Charlie Brown;34.56
+D9876543210988;35;Diana Prince;23.45
+E1234567890124;35;Alice Johnson;23.45
+F5647382910569;40;Bob Smith;34.56
 END
 ```
 
 ### Content of file `output.csv`
 
 ```
-D9876543210988;45;Charlie Brown;50.12
-Y9876543210987;45;Bob Smith;25.67
-A1029384756102;45;Alice Johnson;12.34
-Z1928374650912;34;Charlie Brown;50.12
-C1928374650913;34;Diana Prince;33.45
-F5647382910569;34;Bob Smith;25.67
-X1234567890123;34;Alice Johnson;12.34
-W5647382910567;29;Diana Prince;33.45
-B5647382910568;29;Bob Smith;25.67
-E1234567890124;29;Alice Johnson;12.34
+D9876543210988;35;Diana Prince;23.45
+W5647382910567;40;Diana Prince;34.56
+Z1928374650912;25;Charlie Brown;23.45
+C1928374650913;40;Charlie Brown;34.56
+B5647382910568;25;Bob Smith;12.34
+F5647382910569;40;Bob Smith;34.56
+Y9876543210987;30;Bob Smith;45.67
+X1234567890123;25;Alice Johnson;12.34
+E1234567890124;35;Alice Johnson;23.45
+A1029384756102;30;Alice Johnson;45.67
 END
 ```
 
