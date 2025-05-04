@@ -45,9 +45,9 @@ Data handling #2 (structures, reading and writing files, processing CSV document
 
 ### Sample exercises for the *Lab test*
 
-* [`P110201` - Flights](./exercises/P110201/README.md)
-* [`P110202` - Aircrafts](./exercises/P110202/README.md)
-* [`P110203` - Passengers](./exercises/P110203/README.md)
+* [`P110201` - Flights](./exercises/P110201)
+* [`P110202` - Aircrafts](./exercises/P110202)
+* [`P110203` - Passengers](./exercises/P110203)
 
 ## Highlights
 
