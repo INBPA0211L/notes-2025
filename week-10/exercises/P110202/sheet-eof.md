@@ -80,6 +80,7 @@ WX890YZ;300;Concorde;35.67
 UV345ST;400;Boeing 747;25.89
 EF678GH;400;Boeing 747;28.45
 IJ901KL;200;Airbus A320;35.67
+
 ```
 
 ### Content of file `output.csv`

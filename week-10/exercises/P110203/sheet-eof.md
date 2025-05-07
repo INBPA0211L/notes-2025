@@ -80,6 +80,7 @@ C1928374650913;40;Charlie Brown;34.56
 D9876543210988;35;Diana Prince;23.45
 E1234567890124;35;Alice Johnson;23.45
 F5647382910569;40;Bob Smith;34.56
+
 ```
 
 ### Content of file `output.csv`
