@@ -11,8 +11,8 @@ First, you must define the type that represents a record of the CSV file.
 Define the record `FLIGHT` based on a structure having the following fields:
 
 1. `flight_number`: the unique identifier for the flight (a string having at most `10` characters, type: `char[]`)
-1. `destination`: the destination airport of the flight (a string having at most `30` characters, type: `char[]`)
 1. `flight_duration`: the duration of the flight in hours (a floating-point number from the range `[0.00,24.99]`, having `2` precision digits, type: `double`)
+1. `destination`: the destination airport of the flight (a string having at most `30` characters, type: `char[]`)
 1. `passenger_count`: the number of passengers on the flight (an integer number from the range `[1,9999999]`, type: `int`)
 
 ### Solution
@@ -21,8 +21,8 @@ Define the record `FLIGHT` based on a structure having the following fields:
 typedef struct
 {
     char flight_number[11];
-    char destination[31];
     double flight_duration;
+    char destination[31];
     int passenger_count;
 } FLIGHT;
 ```
@@ -44,7 +44,7 @@ typedef struct
 Open and read the CSV file whose name (path) is passed as the first command-line argument. Each line represents a single record in the following format:
 
 ```
-<flight_number>;<destination>;<flight_duration>;<passenger_count>
+<flight_number>;<flight_duration>;<destination>;<passenger_count>
 ```
 
 The following notes are applied:
@@ -52,26 +52,27 @@ The following notes are applied:
 1. Implement the solution in function `main()`.
 1. The input uses the `';'` (semicolon) character as the delimiter.
 1. Each line contains at most `55` characters.
-1. The end of the input is denoted with a line containing the character sequence `"END"`. It is guaranteed that the input contains at most `300` records.
-1. Print an error message and exit with status code `2` if the command-line argument is not present.
-1. Print an error message and exit with status code `3` if the file cannot be opened.
+1. The end of the input is denoted with a line containing the character sequence `"END"`. It is guaranteed that the input contains at most `180` records.
+1. Print an error message and exit with status code `7` if the command-line argument is not present.
+1. Print an error message and exit with status code `8` if the file cannot be opened.
 1. The `flight_duration` field of each flight has `2` precision digits in its representation.
 1. You can expect only valid values for all the fields.
+1. Each line is terminated with a newline character.
 
 #### Sample input
 
 ```
 10
-FL123;New York;5.25;1500
-AB987;London;3.75;2300
-XY456;Tokyo;7.50;1800
-CD321;Paris;2.85;1200
-EF654;New York;5.25;2300
-GH789;London;3.75;1500
-IJ012;Tokyo;7.50;1200
-KL345;Paris;2.85;1800
-MN678;New York;6.10;1500
-OP901;London;4.20;2300
+FL123;3.25;New York;150
+AB987;5.50;London;200
+XY456;3.25;Tokyo;150
+CD789;7.75;Paris;300
+EF321;5.50;New York;450
+GH654;7.75;London;200
+IJ987;3.25;Paris;150
+KL432;5.50;Tokyo;450
+MN876;7.75;New York;300
+OP543;3.25;London;9999999
 ```
 
 ### Solution
@@ -81,30 +82,30 @@ OP901;London;4.20;2300
 
 int main(int argc, char *argv[])
 {
-    FLIGHT data[300];
     char line[57];
 
     if (argc < 2)
     {
         fprintf(stderr, "No 1st argument\n");
-        return 2;
+        return 7;
     }
     FILE *file = fopen(argv[1], "r");
     if (!file)
     {
         fprintf(stderr, "%s cannot be opened\n", argv[1]);
-        return 3;
+        return 8;
     }
 
     int length = atoi(fgets(line, sizeof(line), file));
+    FLIGHT flights[length];
     for (int i = 0; i < length; i++)
     {
         fgets(line, sizeof(line), file);
         line[strlen(line) - 1] = '\0';
-        strcpy(data[i].flight_number, strtok(line, ";"));
-        strcpy(data[i].destination, strtok(NULL, ";"));
-        data[i].flight_duration = atof(strtok(NULL, ";"));
-        data[i].passenger_count = atoi(strtok(NULL, ";"));
+        strcpy(flights[i].flight_number, strtok(line, ";"));
+        flights[i].flight_duration = atof(strtok(NULL, ";"));
+        strcpy(flights[i].destination, strtok(NULL, ";"));
+        flights[i].passenger_count = atoi(strtok(NULL, ";"));
     }
     fclose(file);
 
@@ -134,7 +135,7 @@ Changes applied to last week's guidelines (considering the use of function `fget
 Open and read the CSV file whose name (path) is passed as the first command-line argument. Each line represents a single record in the following format:
 
 ```
-<flight_number>;<destination>;<flight_duration>;<passenger_count>
+<flight_number>;<flight_duration>;<destination>;<passenger_count>
 ```
 
 The following notes are applied:
@@ -142,25 +143,26 @@ The following notes are applied:
 1. Implement the solution in function `main()`.
 1. The input uses the `';'` (semicolon) character as the delimiter.
 1. Each line contains at most `55` characters.
-1. The end of the input is denoted with a line containing the character sequence `"END"`. It is guaranteed that the input contains at most `300` records.
-1. Print an error message and exit with status code `2` if the command-line argument is not present.
-1. Print an error message and exit with status code `3` if the file cannot be opened.
+1. The end of the input is denoted with `EOF`. It is guaranteed that the input contains at most `180` records.
+1. Print an error message and exit with status code `7` if the command-line argument is not present.
+1. Print an error message and exit with status code `8` if the file cannot be opened.
 1. The `flight_duration` field of each flight has `2` precision digits in its representation.
 1. You can expect only valid values for all the fields.
+1. Each line is terminated with a newline character.
 
 #### Sample input
 
 ```
-FL123;New York;5.25;1500
-AB987;London;3.75;2300
-XY456;Tokyo;7.50;1800
-CD321;Paris;2.85;1200
-EF654;New York;5.25;2300
-GH789;London;3.75;1500
-IJ012;Tokyo;7.50;1200
-KL345;Paris;2.85;1800
-MN678;New York;6.10;1500
-OP901;London;4.20;2300
+FL123;3.25;New York;150
+AB987;5.50;London;200
+XY456;3.25;Tokyo;150
+CD789;7.75;Paris;300
+EF321;5.50;New York;450
+GH654;7.75;London;200
+IJ987;3.25;Paris;150
+KL432;5.50;Tokyo;450
+MN876;7.75;New York;300
+OP543;3.25;London;9999999
 ```
 
 ### Solution
@@ -170,29 +172,29 @@ OP901;London;4.20;2300
 
 int main(int argc, char *argv[])
 {
-    FLIGHT data[300];
+    FLIGHT flights[180];
     char line[57];
 
     if (argc < 2)
     {
         fprintf(stderr, "No 1st argument\n");
-        return 2;
+        return 7;
     }
     FILE *file = fopen(argv[1], "r");
     if (!file)
     {
         fprintf(stderr, "%s cannot be opened\n", argv[1]);
-        return 3;
+        return 8;
     }
 
     int length = 0;
     while (fgets(line, sizeof(line), file))
     {
         line[strlen(line) - 1] = '\0';
-        strcpy(data[length].flight_number, strtok(line, ";"));
-        strcpy(data[length].destination, strtok(NULL, ";"));
-        data[length].flight_duration = atof(strtok(NULL, ";"));
-        data[length].passenger_count = atoi(strtok(NULL, ";"));
+        strcpy(flights[length].flight_number, strtok(line, ";"));
+        flights[length].flight_duration = atof(strtok(NULL, ";"));
+        strcpy(flights[length].destination, strtok(NULL, ";"));
+        flights[length].passenger_count = atoi(strtok(NULL, ";"));
         length++;
     }
     fclose(file);
@@ -223,7 +225,7 @@ Changes applied to last week's guidelines (considering the use of function `fget
 Open and read the CSV file whose name (path) is passed as the first command-line argument. Each line represents a single record in the following format:
 
 ```
-<flight_number>;<destination>;<flight_duration>;<passenger_count>
+<flight_number>;<flight_duration>;<destination>;<passenger_count>
 ```
 
 The following notes are applied:
@@ -231,25 +233,26 @@ The following notes are applied:
 1. Implement the solution in function `main()`.
 1. The input uses the `';'` (semicolon) character as the delimiter.
 1. Each line contains at most `55` characters.
-1. The end of the input is denoted with a line containing the character sequence `"END"`. It is guaranteed that the input contains at most `300` records.
-1. Print an error message and exit with status code `2` if the command-line argument is not present.
-1. Print an error message and exit with status code `3` if the file cannot be opened.
+1. The end of the input is denoted with a line containing the character sequence `"END"`. It is guaranteed that the input contains at most `180` records.
+1. Print an error message and exit with status code `7` if the command-line argument is not present.
+1. Print an error message and exit with status code `8` if the file cannot be opened.
 1. The `flight_duration` field of each flight has `2` precision digits in its representation.
 1. You can expect only valid values for all the fields.
+1. Each line is terminated with a newline character.
 
 #### Sample input
 
 ```
-FL123;New York;5.25;1500
-AB987;London;3.75;2300
-XY456;Tokyo;7.50;1800
-CD321;Paris;2.85;1200
-EF654;New York;5.25;2300
-GH789;London;3.75;1500
-IJ012;Tokyo;7.50;1200
-KL345;Paris;2.85;1800
-MN678;New York;6.10;1500
-OP901;London;4.20;2300
+FL123;3.25;New York;150
+AB987;5.50;London;200
+XY456;3.25;Tokyo;150
+CD789;7.75;Paris;300
+EF321;5.50;New York;450
+GH654;7.75;London;200
+IJ987;3.25;Paris;150
+KL432;5.50;Tokyo;450
+MN876;7.75;New York;300
+OP543;3.25;London;9999999
 END
 ```
 
@@ -260,19 +263,19 @@ END
 
 int main(int argc, char *argv[])
 {
-    FLIGHT data[300];
+    FLIGHT flights[180];
     char line[57];
 
     if (argc < 2)
     {
         fprintf(stderr, "No 1st argument\n");
-        return 2;
+        return 7;
     }
     FILE *file = fopen(argv[1], "r");
     if (!file)
     {
         fprintf(stderr, "%s cannot be opened\n", argv[1]);
-        return 3;
+        return 8;
     }
 
     int length = 0;
@@ -281,14 +284,15 @@ int main(int argc, char *argv[])
         fgets(line, sizeof(line), file);
         line[strlen(line) - 1] = '\0';
 
-        if(strcmp(line, "END") == 0) {
+        if (strcmp(line, "END") == 0)
+        {
             break;
         }
-        
-        strcpy(data[length].flight_number, strtok(line, ";"));
-        strcpy(data[length].destination, strtok(NULL, ";"));
-        data[length].flight_duration = atof(strtok(NULL, ";"));
-        data[length].passenger_count = atoi(strtok(NULL, ";"));
+
+        strcpy(flights[length].flight_number, strtok(line, ";"));
+        flights[length].flight_duration = atof(strtok(NULL, ";"));
+        strcpy(flights[length].destination, strtok(NULL, ";"));
+        flights[length].passenger_count = atoi(strtok(NULL, ";"));
         length++;
     }
     fclose(file);
@@ -318,9 +322,9 @@ Changes applied to last week's guidelines (considering the use of function `fget
 
 Sort the array using the built-in function `qsort()`, and the following stages:
 
-1. field `flight_duration` (descending)
-1. field `destination` (ascending)
 1. field `passenger_count` (descending)
+1. field `destination` (ascending)
+1. field `flight_duration` (descending)
 1. field `flight_number` (ascending)
 
 The following notes are applied:
@@ -338,22 +342,19 @@ int cmp(const void *a, const void *b)
     FLIGHT *left = (FLIGHT *)a;
     FLIGHT *right = (FLIGHT *)b;
 
-    if (left->flight_duration - right->flight_duration)
-    {
-        return -(left->flight_duration - right->flight_duration);
-    }
-
-    if (strcmp(left->destination, right->destination))
-    {
-        return (strcmp(left->destination, right->destination));
-    }
-
-    if (left->passenger_count - right->passenger_count)
+    if (left->passenger_count != right->passenger_count)
     {
         return -(left->passenger_count - right->passenger_count);
     }
-
-    return (strcmp(left->flight_number, right->flight_number));
+    if (strcmp(left->destination, right->destination))
+    {
+        return strcmp(left->destination, right->destination);
+    }
+    if (left->flight_duration != right->flight_duration)
+    {
+        return left->flight_duration > right->flight_duration ? -1 : 1;
+    }
+    return strcmp(left->flight_number, right->flight_number);
 }
 
 int main() {
@@ -376,7 +377,7 @@ Open the CSV file, whose name is passed as the second command-line argument, the
 1. Implement the solution in function `main()`.
 1. The file should have the same format as the input file.
 1. Print an error message and exit with status code `9` if the command-line argument is not present.
-1. Print an error message and exit with status code `6` if the file cannot be opened.
+1. Print an error message and exit with status code `5` if the file cannot be opened.
 
 ### Code (version *reading `n` records*)
 
@@ -394,13 +395,13 @@ int main(int argc, char *argv[])
     if (!file)
     {
         fprintf(stderr, "%s cannot be opened\n", argv[2]);
-        return 6;
+        return 5;
     }
 
     fprintf(file, "%d\n", length);
     for (int i = 0; i < length; i++)
     {
-        fprintf(file, "%s;%s;%.2lf;%d\n", data[i].flight_number, data[i].destination, data[i].flight_duration, data[i].passenger_count);
+        fprintf(file, "%s;%.2lf;%s;%d\n", flights[i].flight_number, flights[i].flight_duration, flights[i].destination, flights[i].passenger_count);
     }
     fclose(file);
 
@@ -424,12 +425,12 @@ int main(int argc, char *argv[])
     if (!file)
     {
         fprintf(stderr, "%s cannot be opened\n", argv[2]);
-        return 6;
+        return 5;
     }
 
     for (int i = 0; i < length; i++)
     {
-        fprintf(file, "%s;%s;%.2lf;%d\n", data[i].flight_number, data[i].destination, data[i].flight_duration, data[i].passenger_count);
+        fprintf(file, "%s;%.2lf;%s;%d\n", flights[i].flight_number, flights[i].flight_duration, flights[i].destination, flights[i].passenger_count);
     }
     fclose(file);
 
@@ -453,12 +454,12 @@ int main(int argc, char *argv[])
     if (!file)
     {
         fprintf(stderr, "%s cannot be opened\n", argv[2]);
-        return 6;
+        return 5;
     }
 
     for (int i = 0; i < length; i++)
     {
-        fprintf(file, "%s;%s;%.2lf;%d\n", data[i].flight_number, data[i].destination, data[i].flight_duration, data[i].passenger_count);
+        fprintf(file, "%s;%.2lf;%s;%d\n", flights[i].flight_number, flights[i].flight_duration, flights[i].destination, flights[i].passenger_count);
     }
     fprintf(file, "END\n");
     fclose(file);
