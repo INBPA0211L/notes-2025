@@ -24,7 +24,7 @@ The following notes are applied:
 1. Implement the solution in function `main()`.
 1. The input uses the `';'` (semicolon) character as the delimiter.
 1. Each line contains at most `55` characters.
-The end of the input is denoted with `EOF`. It is guaranteed that the input contains at most `180` records.
+1. The end of the input is denoted with `EOF`. It is guaranteed that the input contains at most `180` records.
 1. Print an error message and exit with status code `7` if the command-line argument is not present.
 1. Print an error message and exit with status code `8` if the file cannot be opened.
 1. The `flight_duration` field of each flight has `2` precision digits in its representation.
