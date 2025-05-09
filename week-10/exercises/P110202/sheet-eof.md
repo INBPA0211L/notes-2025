@@ -29,6 +29,7 @@ The end of the input is denoted with `EOF`. It is guaranteed that the input cont
 1. Print an error message and exit with status code `5` if the file cannot be opened.
 1. The `wing_span` field of each aircraft has `2` precision digits in its representation.
 1. You can expect only valid values for all the fields.
+1. Each line is terminated with a newline character.
 
 ## Sorting records
 
@@ -80,7 +81,6 @@ WX890YZ;300;Concorde;35.67
 UV345ST;400;Boeing 747;25.89
 EF678GH;400;Boeing 747;28.45
 IJ901KL;200;Airbus A320;35.67
-
 ```
 
 ### Content of file `output.csv`

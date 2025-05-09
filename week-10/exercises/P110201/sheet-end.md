@@ -29,6 +29,7 @@ The end of the input is denoted with a line containing the character sequence `"
 1. Print an error message and exit with status code `8` if the file cannot be opened.
 1. The `flight_duration` field of each flight has `2` precision digits in its representation.
 1. You can expect only valid values for all the fields.
+1. Each line is terminated with a newline character.
 
 ## Sorting records
 

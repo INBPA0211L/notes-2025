@@ -29,6 +29,7 @@ The first line of the input contains the value `n` denoting the number of record
 1. Print an error message and exit with status code `5` if the file cannot be opened.
 1. The `wing_span` field of each aircraft has `2` precision digits in its representation.
 1. You can expect only valid values for all the fields.
+1. Each line is terminated with a newline character.
 
 ## Sorting records
 

@@ -29,6 +29,7 @@ The end of the input is denoted with `EOF`. It is guaranteed that the input cont
 1. Print an error message and exit with status code `4` if the file cannot be opened.
 1. The `baggage_weight` field of each passenger has `2` precision digits in its representation.
 1. You can expect only valid values for all the fields.
+1. Each line is terminated with a newline character.
 
 ## Sorting records
 
@@ -80,7 +81,6 @@ C1928374650913;40;Charlie Brown;34.56
 D9876543210988;35;Diana Prince;23.45
 E1234567890124;35;Alice Johnson;23.45
 F5647382910569;40;Bob Smith;34.56
-
 ```
 
 ### Content of file `output.csv`

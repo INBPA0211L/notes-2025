@@ -29,6 +29,7 @@ The end of the input is denoted with `EOF`. It is guaranteed that the input cont
 1. Print an error message and exit with status code `8` if the file cannot be opened.
 1. The `flight_duration` field of each flight has `2` precision digits in its representation.
 1. You can expect only valid values for all the fields.
+1. Each line is terminated with a newline character.
 
 ## Sorting records
 
@@ -80,7 +81,6 @@ IJ987;3.25;Paris;150
 KL432;5.50;Tokyo;450
 MN876;7.75;New York;300
 OP543;3.25;London;9999999
-
 ```
 
 ### Content of file `output.csv`
